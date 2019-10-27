@@ -1,0 +1,18 @@
+body {
+    font-family: Arial, Verdana, sans-serif;
+    background: #A9D0F5;
+}
+p {
+    color: #6A0888;
+}
+
+ul,ol {
+    color: darkgrey;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #2B81AF;
+}
+figcaption {
+    font-size: 10px;
+    font-weight: bold;
+}

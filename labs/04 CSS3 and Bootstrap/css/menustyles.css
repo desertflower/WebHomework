@@ -2,6 +2,7 @@
 
 body {
     font-family: Arial, Verdana, sans-serif;
+    background-color: pink;
 }
 
 nav ul {
@@ -12,6 +13,10 @@ nav ul li {
     float: left;
     width: 10%;
     text-align: center;
+    color: darkgrey;
+    border-style: solid;
+    border-width: 3px;
+    border-color: hotpink;
 }
 
 nav ul li ul {

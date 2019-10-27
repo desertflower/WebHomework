@@ -22,12 +22,14 @@
 				<!--
 				Make an input named "email"
 				-->
+				Email: <input type="email" name="email">
 			</div>
 			<div>
 				Assignment:
 				<!--
 				Make an input named "assignment"
 				-->
+				Assignment: <input type="text" name="assignment"/>
 				
 			</div>
 
@@ -36,6 +38,7 @@
 				<!--
 				Make an input named "code" which is a text area to put student's code into.
 				-->
+				Code: <input type="number" name="code"/>
 				
 			</div>
 			<div>
@@ -43,18 +46,33 @@
 			<!--
 				Make an input named "cheat" which is a check box the student must check.
 			-->
+				<input type="checkbox" name="cheat" value="yes" checked> Yes
+				<input type="checkbox" name="cheat" value="no"> No
+
 			</div>
 			<div>
 				Pay:
 			<!--
 				Make an input named "payment" which is a radio box with possible values of visa, paypal, mastercard
 			-->
+				Visa: <input type="radio" name="payment" value="visa" checked/>
+				Paypal: <input type="radio" name="payment" value="paypal"/>
+				Mastercard: <input type="radio" name="payment" value="mastercard"/>
 			</div>
 			<div>
 				Score:
 			<!--
 				Make an input named "score" which is a list of choices for the score 
 			-->
+				<input list="browsers">
+
+				<datalist id="browsers">
+					<option value="1">
+					<option value="2">
+					<option value="3">
+					<option value="4">
+					<option value="5">
+				</datalist>
 			</div>
 			<input type="submit" />
 		</form>
