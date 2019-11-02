@@ -4,6 +4,27 @@
   <meta charset="utf-8">
   <title>Object-o-matic</title>
   <script>
+
+    function makeEngine() {
+      var cylinders = [2, 3, 4, 5, 6, 8, 10, 12, 14, 16];
+      var volumes = [1.2, 1.3, 1.4, 1.5, 1.8, 2.0, 2.4, 2.8, 3.0];
+      var fuelTypes = ["diesel", "gasoline", "Bio-diesel", "ethanol"];
+      var maxTorques = [200, 265, 320];
+
+      var random1 = Math.floor(Math.random() * cylinders.length);
+      var random2 = Math.floor(Math.random() * volumes.length);
+      var random3 = Math.floor(Math.random() * fuelTypes.length);
+      var random4 = Math.floor(Math.random() * maxTorques.length);
+
+      var engine = {
+        cylinder: cylinders[random1],
+        volume: volumes[random2],
+        fuelType: fuelTypes[random3],
+        maxTorque: maxTorques[random4]
+      };
+      return engine;
+    }
+
 	function makeCar() {
 		var makes = ["Chevy", "GM", "Fiat", "Webville Motors", "Tucker"];
 		var models = ["Cadillac", "500", "Bel-Air", "Taxi", "Torpedo"];
@@ -25,13 +46,19 @@
 			color: colors[rand4],
 			passengers: rand5,
 			convertible: convertible[rand6],
-			mileage: 0
+			mileage: 0,
+            engineType: makeEngine()
 		};
+
 		return car;
 	}
 
 	function displayCar(car) {
-		console.log("Your new car is a " + car.year + " " + car.make + " " + car.model);
+		console.log("Your new car is a " + car.year + " " + car.make + " " + car.model
+                + " " + car.engineType.cylinder
+                + " " + car.engineType.fuelType
+                + " " + car.engineType.maxTorque
+                + " " + car.engineType.volume);
 	}
 
 	var carToSell = makeCar();

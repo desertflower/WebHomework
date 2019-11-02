@@ -4,67 +4,108 @@
 	This page demonstrates a form.
 	-->
 	<head>
-		<meta charset="utf-8"/>
-		<title>Demonstrating HTML forms</title>
+        <style>
+            input[type="text"] {
+                color : blue;
+                margin: 8px 0;
+            }
+            input[type="submit"] {
+                font-weight : bold;
+                margin: 8px 0;
+                background-color: #4CAF50;
+                color: white;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+            }
+            input[input="checkbox"]{
+                margin: 8px 0;
+            }
+            input[input="email"]{
+                margin: 8px 0;
+            }
+            input[input="number"]{
+                margin: 8px 0;
+            }
+            fieldset {
+                margin: 8px 0;
+                width:160px;
+            }
+            #browsers {
+                margin: 8px 0;
+            }
+        </style>
+        <title>Demonstrating HTML forms</title>
+        <meta charset="utf-8"/>
 	</head>
 	
 	<body>
 		<h1>Turnitin</h1>
 		<form  lang="fi" action="">
 			<div>
-				Name: <input type="text" name="studentname"/>
+				Name: <input type="text" name="studentname" placeholder=" " title="Enter your first name here"
+							 oninvalid="setCustomValidity('Sinun on täytettävä nimesi!')" required="required"/>
 			</div>
 			<div>
-				Student id: <input type="text" name="id"  />
+				Student id: <input type="text" pattern="\d{6}\-\d{3}([0-9A-Y])" name="id" placeholder=" "
+								   title="Enter your ID here. First 6 digits are the birth date: day, month and year's last two numbers. After '-' there are 3 digits and last character can be either digit or letter from A to Y "
+								   oninvalid="setCustomValidity('Sinun on täytettävä henkilöllisyystodistuksesi!')" required="required"/>
 			</div>
 			<div>
-				Email:
 				<!--
 				Make an input named "email"
 				-->
-				Email: <input type="email" name="email">
+				Email: <input type="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" name="email" placeholder=" " title="Enter your email here" oninvalid="InvalidMsg(this);"
+                              oninput="InvalidMsg(this);" required="required"/>
 			</div>
 			<div>
-				Assignment:
 				<!--
 				Make an input named "assignment"
 				-->
-				Assignment: <input type="text" name="assignment"/>
+				Assignment: <input type="text" name="assignment" placeholder=" " title="Enter assignment here"
+								   oninvalid="setCustomValidity('Sinun on täytettävä toimeksianto!')" required="required"/>
 				
 			</div>
 
 			<div>
-				Code:
 				<!--
 				Make an input named "code" which is a text area to put student's code into.
 				-->
-				Code: <input type="number" name="code"/>
+				Code: <input type="number" name="code" placeholder=" " title="Enter the code here"
+							 oninvalid="setCustomValidity('Sinun on täytettävä koodi!')" required="required"/>
 				
 			</div>
 			<div>
-				Cheat:
+				<!--Cheat:-->
 			<!--
 				Make an input named "cheat" which is a check box the student must check.
 			-->
-				<input type="checkbox" name="cheat" value="yes" checked> Yes
-				<input type="checkbox" name="cheat" value="no"> No
+                <fieldset>
+                    <legend>Cheat</legend>
+                    <label><input type="checkbox" name="cheat" value="yes" checked>Yes</label><br>
+                    <label><input type="checkbox" name="cheat" value="no">No</label>
+                </fieldset>
 
 			</div>
 			<div>
-				Pay:
 			<!--
 				Make an input named "payment" which is a radio box with possible values of visa, paypal, mastercard
 			-->
-				Visa: <input type="radio" name="payment" value="visa" checked/>
-				Paypal: <input type="radio" name="payment" value="paypal"/>
-				Mastercard: <input type="radio" name="payment" value="mastercard"/>
+                <fieldset id="fi">
+                    <legend>Pay</legend>
+                    <label><input type="radio" name="payment" value="visa" checked/>Visa</label><br>
+                    <label><input type="radio" name="payment" value="paypal"/>Paypal</label><br>
+                    <label><input type="radio" name="payment" value="mastercard"/>Mastercard</label>
+                </fieldset>
 			</div>
 			<div>
 				Score:
 			<!--
 				Make an input named "score" which is a list of choices for the score 
 			-->
-				<input list="browsers">
+				<input list="browsers" placeholder=" " title="Choose from the list"
+					   oninvalid="setCustomValidity('Sinun on täytettävä pisteet!')" pattern="[0-9]{10}" required="required">
 
 				<datalist id="browsers">
 					<option value="1">
@@ -74,8 +115,25 @@
 					<option value="5">
 				</datalist>
 			</div>
-			<input type="submit" />
+			<input type="submit" placeholder=" " title="Click the button to submit your info" />
 		</form>
-		<a href="http://jigsaw.w3.org/css-validator/check/referer">Validate</a>
+
+        <script>
+          function InvalidMsg(email) {
+
+            if (email.value === '') {
+              email.setCustomValidity
+              ('Sähköpostiosoitteen syöttäminen on välttämätöntä!');
+            } else if (textbox.validity.typeMismatch) {
+              email.setCustomValidity
+              ('Anna voimassa oleva sähköpostiosoite!');
+            } else {
+              email.setCustomValidity('');
+            }
+
+            return true;
+          }
+        </script>
+        <a href="http://jigsaw.w3.org/css-validator/check/referer">Validate</a>
 	</body>
 </html>

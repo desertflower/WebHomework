@@ -6,31 +6,41 @@
 </head>
 
 <body>
-  <span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
+<span id="ajaxButton" style="cursor: pointer; text-decoration: underline">
     Make a request
   </span>
 
+<form>
+    Search Google:
+    <input id="sear" type="search" name="googlesearch">
+</form>
 
-  <script type="text/javascript">
+<button id="search-button">Search</button>
+
+
+<script type="text/javascript">
   (function() {
     var httpRequest;
     var testUrl = 'data/story.json';
     // Use Github Gist when no web server is available
     // var testUrl = 'https://gist.githubusercontent.com/c0lin/571d38b984d41b44aacf/raw/story.json';
-    document.getElementById("ajaxButton").onclick = function() { makeRequest(testUrl); };
+    document.getElementById('ajaxButton').onclick = function() {
+      makeRequest(testUrl);
+    };
+
+    //document.getElementById("ajaxButton").addEventListener("click", function(){makeRequest(testUrl);});
 
     function makeRequest(url) {
       if (window.XMLHttpRequest) { // Mozilla, Safari, ...
         httpRequest = new XMLHttpRequest();
       } else if (window.ActiveXObject) { // IE
         try {
-          httpRequest = new ActiveXObject("Msxml2.XMLHTTP");
-        } 
-        catch (e) {
+          httpRequest = new ActiveXObject('Msxml2.XMLHTTP');
+        } catch (e) {
           try {
-            httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
-          } 
-          catch (e) {}
+            httpRequest = new ActiveXObject('Microsoft.XMLHTTP');
+          } catch (e) {
+          }
         }
       }
 
@@ -40,7 +50,7 @@
       }
 
       // set a callback function for when the httpRequest completes
-      httpRequest.onreadystatechange = alertContents;
+      httpRequest.onreadystatechange = handler; //alertContents;
 
       // now do the actual AJAX request
       httpRequest.open('GET', url);
@@ -58,8 +68,57 @@
         }
       }
     }
+
+
+    var x = document.getElementById('sear');
+
+    document.getElementById('search-button').onclick = function() {
+      searchFunction();
+    };
+
+    function searchFunction() {
+      if (window.XMLHttpRequest) {
+        httpRequest = new XMLHttpRequest();
+      } else if (window.ActiveXObject) {
+        try {
+          httpRequest = new ActiveXObject('Msxml2.XMLHTTP');
+        } catch (e) {
+          try {
+            httpRequest = new ActiveXObject('Microsoft.XMLHTTP');
+          } catch (e) {
+          }
+        }
+      }
+
+      if (!httpRequest) {
+        alert('Giving up :( Cannot create an XMLHTTP instance');
+        return false;
+      }
+      httpRequest.onreadystatechange = handler;
+
+      httpRequest.open('GET', x.value);
+      httpRequest.send();
+
+    };
+
+    function handler() {
+      if (httpRequest.readyState === 4) {
+        if (httpRequest.status === 404) {
+          alert('Site is DOWN!');
+        } else if (httpRequest.status === 403) {
+          alert('Request is forbidden!');
+        } else if (httpRequest.status === 200) {
+          alert(httpRequest.responseText);
+        } else {
+          alert('wrong');
+        }
+      }
+    }
+
   })();
-  </script>
+
+
+</script>
 
 </body>
 </html>
