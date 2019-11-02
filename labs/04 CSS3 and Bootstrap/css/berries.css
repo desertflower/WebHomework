@@ -1,0 +1,39 @@
+body {
+    background-color: #F5A9F2;
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 20px;
+}
+h1 {
+    color:darkred;
+    font-weight: bold;
+    font-style: italic;
+    font-size: 80px;
+    text-align: center;
+}
+h4 {
+    color:#B4045F;
+    text-align: center;
+    margin-top: 1px;
+}
+p {
+    text-align: center;
+}
+figure {
+    float:left;
+    padding-top: 5px;
+}
+figcaption{
+    font-size: 15px;
+    text-align: center;
+}
+table, tr, td {
+    background-color: #F5BCA9;
+    border: 1px solid black;
+    padding: 25px;
+    width:500px;
+}
+div {
+    background-color:#A4A4A4;
+    height: 600px
+}
