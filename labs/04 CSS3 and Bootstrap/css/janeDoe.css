@@ -1,0 +1,24 @@
+body {
+    background-color: #F5A9F2;
+    margin: 0 auto;
+    max-width: 960px;
+    padding: 20px;
+}
+h1 {
+    color:#b1334d;}
+h3 {
+    color:#6A0888;
+}
+.photo-left {
+    float:left;
+    margin-right:20px;
+}
+table, th, td {
+    background-color: #F5BCA9;
+    border: 1px solid black;
+    padding: 15px;
+    width:500px;
+}
+th {
+    text-align: left;
+}
