@@ -31,16 +31,63 @@ function Coffee(roast, ounces) {
 		}
 		return msg;
 	};
+  this.sip = function() {
+    var msg1 = "Hmm, tasty";
+    return msg1;
+  };
 }
 
 var coffee = new Coffee("House Blend", 12);
 console.log(coffee.order());
+console.log(coffee.sip());
 
 var darkRoast = new Coffee("Dark Roast", 16);
 console.log(darkRoast.order());
 
 var specialBlend = new Coffee("Special Blend", 200);
 console.log(specialBlend.order());
+
+function Tea(type, ounces) {
+  this.type = type;
+  this.ounces = ounces;
+  this.getSteepTime = function() {
+    if (this.ounces === 8) {
+      return "small";
+    }else if (this.ounces === 12) {
+      return "medium";
+    }else if (this.ounces === 16) {
+      return "large";
+    }
+  };
+  this.order = function() {
+    var message;
+    switch (this.getSteepTime()) {
+      case "small":
+      case "medium":
+      case "large":
+        message = "You've ordered a " + this.getSteepTime() + " " + this.type + " tea.";
+        break;
+      default:
+        message = "We don't have a " + this.type + " in that size!";
+        break;
+    }
+    return message;
+  };
+  this.sip = function() {
+    var message1 = "Hmm, tasty";
+    return message1;
+  };
+}
+var tea = new Tea("Green Tea", 12);
+console.log(tea.order());
+console.log(tea.sip());
+
+var darkTea = new Tea("Dark Tea", 16);
+console.log(darkTea.order());
+
+var lemonTea = new Tea("Lemon Tea", 50);
+console.log(lemonTea.order());
+
 
 </script>
 </head>

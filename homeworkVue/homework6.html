@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Deleting an item from a list</title>
+
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id ="app" >
+    <table>
+
+    </table><br>
+
+    <button v-on:click="add">Add user</button>
+    <button v-on:click="delete">Delete user</button>z
+
+</div>
+
+<script>
+
+  var app = new Vue({
+    el: '#app',
+
+    data: {
+    },
+    methods: {
+      add: function() {
+      },
+
+      delete: function(name) {
+        this.name.splice(this.name.indexOf(name), 1);
+      }
+    }
+  });
+</script>
+
+</body>
+</html>

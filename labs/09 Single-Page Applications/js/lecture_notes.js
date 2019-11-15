@@ -3,16 +3,26 @@ var notes = [];
 /*
  * displays the 'add' screen if this has been bookmarked by user
  */
-if (window.location.hash == '#add' || notes.length === 0) {
-	document.getElementById('editPage').style.display = 'none';
-} else {
-	document.getElementById('addPage').style.display = 'none';
+function myFunction() {
+	if (window.location.hash == '#add' || notes.length === 0) {
+		document.getElementById('editPage').style.display = 'none';
+		document.getElementById('addPage').style.display = 'block';
+	} else {
+		document.getElementById('addPage').style.display = 'none';
+		document.getElementById('editPage').style.display = 'block';
+	}
 }
+
+myFunction();
 
 document.querySelector('#addPage button').onclick = function() {
 	console.log('add note');
 	var title = document.querySelector('#addPage input').value;
 	var note = document.querySelector('#addPage textarea').value;
+	notes.push({title: title, note: note});
+	document.querySelector('#addPage input').value = "";
+	document.querySelector('#addPage textarea').value = "";
+	loadList();
 };
 
 /*
@@ -20,10 +30,22 @@ document.querySelector('#addPage button').onclick = function() {
  */ 
 document.querySelector('nav > ul > li:nth-child(1)').onclick = function() {
 	console.log('first link clicked');
+	myFunction();
 };
 
 document.querySelector('nav > ul > li:nth-child(2)').onclick = function() {
 	console.log('second link clicked');
+	myFunction();
+};
+
+document.querySelector('#editPage input').onchange = function() {
+	console.log('first link clicked');
+	updateNote();
+};
+
+var note = document.querySelector('#editPage textarea').onchange = function() {
+	console.log('second link clicked');
+	updateNote();
 };
 
 

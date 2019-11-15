@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Vue example</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<div id ="app">
+    <!--<h1>{{message}}</h1>-->
+    <h1 v-bind:title = "show" v-text = "message" ></h1><br/>
+    <textarea v-model="text"@keyup="charCount()"></textarea><br/>
+    <span>{{totalcharacter}}characters</span>
+</div>
+<script>
+    var app = new Vue ({
+      el: '#app',
+      data: {
+        message : 'Hello World!',
+        show : 'my greetings',
+        text: "",
+        totalcharacter: 0
+      },
+      methods: {
+        charCount: function() {
+          this.totalcharacter= this.text.length;
+        }
+      }
+    });
+</script>
+
+</body>
+</html>

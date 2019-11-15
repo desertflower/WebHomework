@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of items to do</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<ul id="todo">
+    <li v-for="item in items">
+        {{ item.message }}
+    </li>
+</ul>
+<script>
+  var app = new Vue({
+        el: '#todo',
+        data: {
+          items: [
+            { message: 'shopping' },
+            { message: 'going to movie' },
+            {message: 'doing homework'}
+          ]
+        }
+      });
+  </script>
+
+</body>
+</html>

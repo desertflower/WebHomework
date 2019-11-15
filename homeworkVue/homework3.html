@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Homework3</title>
+
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id = "app">
+<p>{{ speed }}</p>
+<button v-on:click="minus">-</button>
+<button v-on:click="zero">0</button>
+<button v-on:click="plus">+</button>
+</div>
+
+<script>
+
+  var app = new Vue({
+    el: '#app',
+    data: {
+      speed: 0
+    },
+    methods: {
+      minus: function () {
+        this.speed -= 1
+      },
+    zero: function(){
+      this.speed = 0
+    },
+    plus: function(){
+      this.speed += 1
+  }
+    }
+  });
+
+</script>
+</body>
+</html>
+

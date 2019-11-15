@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Methods in Vue</title>
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<div id="app-3">
+    <span v-if="seen">Now you see me</span><br>
+    <p><button class="btn btn-lg btn-primary" v-on:click="seen = !seen">Näytä/Piilota</button></p>
+</div>
+
+<script>
+  var app = new Vue({
+    el: '#app-3',
+    data: {
+      seen: true
+    }
+  });
+</script>
+</body>
+</html>
