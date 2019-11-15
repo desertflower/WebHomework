@@ -1,0 +1,19 @@
+<html>
+<head></head>
+<body>
+<form>
+    <input type="date" value="<%= startDate %>" name="start"/>
+    <input type="date" value="<%= endDate %>" name="end"/>
+    <button type="submit">Search</button>
+</form>
+
+<ul>
+    <% events.forEach(function(event) { %>
+        <li><%= event.Date %> - <%= event.Name %> - <%= event.location_name %></li>
+    <% }); %>
+</ul>
+</body>
+<script>
+
+</script>
+</html>
