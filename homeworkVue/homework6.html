@@ -9,12 +9,16 @@
 <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
 
 <div id ="app" >
-    <table>
+    <ul id="todo">
+        <li v-for="(item, index) in items">
+            {{ item.message }}
+            <button v-on:click="remove(index)">X</button>
+        </li>
+    </ul>
 
-    </table><br>
-
-    <button v-on:click="add">Add user</button>
-    <button v-on:click="delete">Delete user</button>z
+    <input v-model="newItem" v-on:keydown="handleKeyDown" placeholder="New item name">
+    <button v-on:click="add">Add item</button>
+    <button v-on:click="remove(0)">Delete first item</button>
 
 </div>
 
@@ -24,13 +28,26 @@
     el: '#app',
 
     data: {
+      newItem: null,
+      items: [
+        { message: 'shopping' },
+        { message: 'going to movie' },
+        { message: 'doing homework'}
+      ]
     },
     methods: {
       add: function() {
+        if (this.newItem)
+            this.items.push({ message: this.newItem });
+        this.newItem = null;
       },
 
-      delete: function(name) {
-        this.name.splice(this.name.indexOf(name), 1);
+      remove: function(i) {
+        this.items.splice(i, 1);
+      },
+
+      handleKeyDown: function (e) {
+        if ((e.which || e.keyCode) === 13) this.add();
       }
     }
   });
