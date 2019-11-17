@@ -12,7 +12,7 @@
 
 <script>
   export default {
-    name: 'EmployeeForm',
+    name: 'employee-form',
     data() {
       return {
         employee: {
@@ -21,7 +21,7 @@
         },
       }
     },
-  };
+  }
 </script>
 
 <style scoped>
